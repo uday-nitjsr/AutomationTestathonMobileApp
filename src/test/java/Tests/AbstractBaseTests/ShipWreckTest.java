@@ -35,7 +35,7 @@ public class ShipWreckTest extends TestBase {
     }
 
     @Test
-    public void pac() throws InterruptedException {
+    public void checkAddNewShipWreck() throws InterruptedException {
         homePage.navigateToShipWreckPage();
         shipWreckDetailsPage.clickOnAddNewShipWreck();
         Thread.sleep(2000);
