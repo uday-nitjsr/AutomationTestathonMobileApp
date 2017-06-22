@@ -8,7 +8,7 @@ We used Appium TestNG test type for android application. It has a basic Page Obj
 to the driver instance. This is taken care of once we select a device pool. TO test your code locally you need to launch appium server in a prelaunch mode.You can
 use below command for this:
 
-appium --pre-launch --app-pkg <appPackage> --app-activity <activityName> --platform-name Android --device-name <deviceName>
+    appium --pre-launch --app-pkg <appPackage> --app-activity <activityName> --platform-name Android --device-name <deviceName>
 
 Once you're done with test cases. You need to package your test cases, and upload it on your device farm project's test run. You can check this link for maven dependencies and plugin configuration: http://docs.aws.amazon.com/devicefarm/latest/developerguide/test-types-android-appium-java-testng.html 
 
