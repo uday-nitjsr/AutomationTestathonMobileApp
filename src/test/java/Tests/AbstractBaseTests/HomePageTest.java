@@ -30,22 +30,22 @@ public class HomePageTest extends TestBase{
 
     @Test(enabled = true)
     public void checkHeader() throws InterruptedException {
-        homePage.takeScreenShot();
+        homePage.takeScreenShot("checkheader");
         Assert.assertEquals(homePage.getHeader().isDisplayed(),true);
         Assert.assertEquals(homePage.getListLabel().isDisplayed(),true);
         Assert.assertEquals(homePage.getButtonToList().isDisplayed(),true);
         Thread.sleep(5000);
-        homePage.takeScreenShot();
+        homePage.takeScreenShot("checkheader-end");
 //        Assert.assertEquals(homePage.getButtonToList().getText(),"WW");
     }
 
     @Test(enabled = true)
     public void validateClickHere() throws  InterruptedException{
-        homePage.takeScreenShot();
+        homePage.takeScreenShot("validate");
         homePage.navigateToShipWreckPage();
         Thread.sleep(2000);
         shipWreckDetailsPage = new ShipWreckDetailsPage(driver);
         Assert.assertEquals(shipWreckDetailsPage.getAllShipWreckLabel().isDisplayed(),true);
-        homePage.takeScreenShot();
+        homePage.takeScreenShot("validate-end");
     }
 }

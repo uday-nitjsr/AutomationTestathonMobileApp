@@ -87,23 +87,9 @@ public abstract class BasePage {
         return element.getText().contains(input);
     }
 
-    public void takeScreenShot() {
-        // Set folder name to store screenshots.
-        destDir = System.getProperty("user.dir")+"/screenshot";
-        // Capture screenshot.
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        // Set date format to set It as screenshot file name.
-        DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy__hh_mm_ssaa");
-        // Create folder under project with name "screenshots" provided to destDir.
-        new File(destDir).mkdirs();
-        // Set file name using current date time.
-        String destFile = dateFormat.format(new Date()) + ".png";
-
-        try {
-            // Copy paste file at destination folder location
-            FileUtils.copyFile(scrFile, new File(destDir + "/" + destFile));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public boolean takeScreenShot(final String name) {
+        String screenshotDirectory = System.getProperty("appium.screenshots.dir", System.getProperty("java.io.tmpdir", ""));
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        return screenshot.renameTo(new File(screenshotDirectory, String.format("%s.png", name)));
     }
 }

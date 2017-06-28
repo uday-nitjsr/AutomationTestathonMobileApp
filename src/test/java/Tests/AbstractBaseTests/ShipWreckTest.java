@@ -40,6 +40,6 @@ public class ShipWreckTest extends TestBase {
         shipWreckDetailsPage.clickOnAddNewShipWreck();
         Thread.sleep(2000);
         Assert.assertEquals(shipwreckFormPage.getNameEditField().isDisplayed(),true);
-        shipWreckDetailsPage.takeScreenShot();
+        shipWreckDetailsPage.takeScreenShot("checkAddNewShipWreck");
     }
 }
