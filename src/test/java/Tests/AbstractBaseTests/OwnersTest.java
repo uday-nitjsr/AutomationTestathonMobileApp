@@ -23,6 +23,7 @@ public class OwnersTest extends TestBase {
         try {
             ownersPage = new OwnersPage(driver);
             ownersPage.getOwnerButton().click();
+            ownersPage.getAllOwnerList().click();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
