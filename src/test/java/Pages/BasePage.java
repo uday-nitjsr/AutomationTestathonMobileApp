@@ -49,13 +49,38 @@ public abstract class BasePage {
 
     public WebElement homeButton;
 
+    public WebElement ownerButton;
+
+    public WebElement veternarianButton;
+
+    public WebElement petType;
+
+    public WebElement specialtiesButton;
+
     public WebElement getHomeButton(){
         return    driver.findElement(By.xpath("//a[@title='home page']//span[contains(@class,'glyphicon')]"));
+    }
+
+    public WebElement getOwnerButton(){
+        return driver.findElement(By.xpath("(//a[@class='dropdown-toggle'])[1]"));
+    }
+
+    public WebElement getVeternarianButton(){
+        return driver.findElement(By.xpath("(//a[@class='dropdown-toggle'])[2]"));
+    }
+
+    public WebElement getPetType(){
+        return driver.findElement(By.xpath("//a[@title='pettypes']"));
+    }
+
+    public WebElement getSpecialtiesButton(){
+        return driver.findElement(By.xpath("//a[@title='specialties']"));
     }
 
     protected BasePage(RemoteWebDriver driver){
         this.driver = driver;
     }
+
 
     public void clickOnHome(){
         getHomeButton().click();
