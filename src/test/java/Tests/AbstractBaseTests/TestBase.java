@@ -51,10 +51,10 @@ public abstract class TestBase {
 
         //Use a empty DesiredCapabilities object
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        /*capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
+        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
         capabilities.setCapability("deviceName","G4AXB7251910HBL");
         capabilities.setCapability("platformName","Android");
-        capabilities.setCapability(CapabilityType.VERSION, "6.0.1");*/
+        capabilities.setCapability(CapabilityType.VERSION, "6.0.1");
 
         driver = new RemoteWebDriver(url, capabilities);
 
@@ -66,7 +66,7 @@ public abstract class TestBase {
 
     @AfterSuite
     public void tearDownAppium() {
-        driver.quit();
+        driver.close();
     }
 
 

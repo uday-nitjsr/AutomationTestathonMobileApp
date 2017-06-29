@@ -47,16 +47,6 @@ public abstract class BasePage {
      */
     protected final RemoteWebDriver driver;
 
-    public WebElement homeButton;
-
-    public WebElement ownerButton;
-
-    public WebElement veternarianButton;
-
-    public WebElement petType;
-
-    public WebElement specialtiesButton;
-
     public WebElement getHomeButton(){
         return    driver.findElement(By.xpath("//a[@title='home page']//span[contains(@class,'glyphicon')]"));
     }

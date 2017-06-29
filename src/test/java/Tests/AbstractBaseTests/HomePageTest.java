@@ -35,4 +35,9 @@ public class HomePageTest extends TestBase{
         Assert.assertEquals(homePage.getWelcomeTextElement().getText(),"Welcome to Dr. Dolittle Petclinic");
     }
 
+    @Test
+    public void verifyTabTitle(){
+        Assert.assertEquals(driver.getTitle(),"Dr. Dolittle Petclinic");
+    }
+
 }
