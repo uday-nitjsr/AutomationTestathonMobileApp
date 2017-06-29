@@ -51,16 +51,16 @@ public abstract class TestBase {
 
         //Use a empty DesiredCapabilities object
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
+        /*capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
         capabilities.setCapability("deviceName","G4AXB7251910HBL");
         capabilities.setCapability("platformName","Android");
-        capabilities.setCapability(CapabilityType.VERSION, "6.0.1");
+        capabilities.setCapability(CapabilityType.VERSION, "6.0.1");*/
 
         driver = new RemoteWebDriver(url, capabilities);
 
         //Use a higher value if your mobile elements take time to show up
         driver.manage().timeouts().implicitlyWait(35, TimeUnit.SECONDS);
-        driver.get("http://ec2-54-169-230-139.ap-southeast-1.compute.amazonaws.com:4200/petclinic/welcome");
+        driver.get("http://ec2-13-229-31-126.ap-southeast-1.compute.amazonaws.com:4200/");
     }
 
 
