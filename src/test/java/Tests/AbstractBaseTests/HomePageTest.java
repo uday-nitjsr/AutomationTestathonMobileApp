@@ -1,7 +1,7 @@
 package Tests.AbstractBaseTests;
 
 import Pages.HomePage;
-import Pages.ShipWreckDetailsPage;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
  */
 public class HomePageTest extends TestBase{
     public HomePage homePage;
-    ShipWreckDetailsPage shipWreckDetailsPage;
+
     @Override
     public String getName() {
         return null;
@@ -30,22 +30,9 @@ public class HomePageTest extends TestBase{
 
     @Test(enabled = true)
     public void checkHeader() throws InterruptedException {
-        homePage.takeScreenShot("checkheader");
-        Assert.assertEquals(homePage.getHeader().isDisplayed(),true);
-        Assert.assertEquals(homePage.getListLabel().isDisplayed(),true);
-        Assert.assertEquals(homePage.getButtonToList().isDisplayed(),true);
-        Thread.sleep(5000);
-        homePage.takeScreenShot("checkheader-end");
-//        Assert.assertEquals(homePage.getButtonToList().getText(),"WW");
+        homePage.clickOnHome();
+        Assert.assertEquals(homePage.getCurrentURL().contains("/welcome"),true);
+        Assert.assertEquals(homePage.getWelcomeTextElement().getText(),"Welcome to Dr. Dolittle Petclinic");
     }
 
-    @Test(enabled = true)
-    public void validateClickHere() throws  InterruptedException{
-        homePage.takeScreenShot("validate");
-        homePage.navigateToShipWreckPage();
-        Thread.sleep(2000);
-        shipWreckDetailsPage = new ShipWreckDetailsPage(driver);
-        Assert.assertEquals(shipWreckDetailsPage.getAllShipWreckLabel().isDisplayed(),true);
-        homePage.takeScreenShot("validate-end");
-    }
 }

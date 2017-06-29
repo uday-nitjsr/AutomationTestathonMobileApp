@@ -21,9 +21,12 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.File;
@@ -39,34 +42,28 @@ public abstract class BasePage {
     private static final int XML_REFRESH_DELAY = 1000;
     String destDir;
 
-
     /**
      * The driver
      */
-    protected final AppiumDriver driver;
+    protected final RemoteWebDriver driver;
 
-    @AndroidFindBy(xpath = "//android.webkit.WebView[@index=0]/android.view.View[@index='0']")
-    private MobileElement topToolBar;
+    public WebElement homeButton;
 
+    public WebElement getHomeButton(){
+        return    driver.findElement(By.xpath("//a[@title='home page']//span[contains(@class,'glyphicon')]"));
+    }
 
-    protected BasePage(AppiumDriver driver){
+    protected BasePage(RemoteWebDriver driver){
         this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), this);
     }
 
-    public MobileElement getDropDownFromTopToolBar(){
-        return topToolBar.findElementByXPath("//android.widget.Button[@index='0']");
+    public void clickOnHome(){
+        getHomeButton().click();
     }
 
-    public MobileElement getHomeFromTopToolBar(){
-        return topToolBar.findElementByXPath("//android.view.View[@index='2']//android.view.View[@index='0']");
+    public String getCurrentURL(){
+        return driver.getCurrentUrl();
     }
-
-    public MobileElement getShipWreckFromTopToolBar(){
-        return topToolBar.findElementByXPath("//android.view.View[@index='2']//android.view.View[@index='1']");
-    }
-
-
     protected boolean sendKeysToElement(String input, WebElement element, boolean appendNewLine) throws InterruptedException {
         final int MAX_ATTEMPTS = 3;
         int attempts = 0;

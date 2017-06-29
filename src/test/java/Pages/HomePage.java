@@ -1,41 +1,22 @@
 package Pages;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 /**
  * Created by ASUS on 08-11-2016.
  */
 public class HomePage extends BasePage {
 
-    public HomePage(AppiumDriver driver) {
+    public HomePage(RemoteWebDriver driver) {
         super(driver);
     }
 
-    @AndroidFindBy(xpath = "//android.view.View[@index='2']//android.widget.Button[@index='0']")
-    private MobileElement buttonToList;
+    WebElement welcomeTextElement;
 
-    @AndroidFindBy(xpath = "//android.webkit.WebView[@index='0']/android.view.View[@index='1']/android.view.View[@index='0']")
-    private MobileElement header;
-
-    @AndroidFindBy(xpath = "//android.webkit.WebView[@index='0']/android.view.View[@index='1']/android.view.View[@index='2']/android.view.View[@index='1']")
-    private MobileElement listLabel;
-
-    public MobileElement getButtonToList(){
-        return buttonToList;
-    }
-
-    public MobileElement getHeader(){
-        return header;
-    }
-
-    public MobileElement getListLabel(){
-        return listLabel;
-    }
-
-    public void navigateToShipWreckPage(){
-        buttonToList.click();
+    public WebElement getWelcomeTextElement(){
+        return driver.findElement(By.cssSelector("app-welcome h1"));
     }
 
 }

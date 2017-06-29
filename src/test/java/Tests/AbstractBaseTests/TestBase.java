@@ -18,8 +18,12 @@ package Tests.AbstractBaseTests;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
@@ -29,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class TestBase {
 
-    public static AndroidDriver<MobileElement> driver;
+    public static RemoteWebDriver driver;
 
 
     public abstract String getName();
@@ -47,16 +51,16 @@ public abstract class TestBase {
 
         //Use a empty DesiredCapabilities object
         DesiredCapabilities capabilities = new DesiredCapabilities();
-//        capabilities.setCapability("deviceName","G4AXB7251910HBL");
-//        capabilities.setCapability("platformName","Android");
-//        capabilities.setCapability(CapabilityType.VERSION, "6.0.1");
-//        capabilities.setCapability("appPackage","com.whatsapp");
-//        capabilities.setCapability("appActivity","com.whatsapp.HomeActivity");
+        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
+        capabilities.setCapability("deviceName","G4AXB7251910HBL");
+        capabilities.setCapability("platformName","Android");
+        capabilities.setCapability(CapabilityType.VERSION, "6.0.1");
 
-        driver = new AndroidDriver<MobileElement>(url, capabilities);
+        driver = new RemoteWebDriver(url, capabilities);
 
         //Use a higher value if your mobile elements take time to show up
         driver.manage().timeouts().implicitlyWait(35, TimeUnit.SECONDS);
+        driver.get("http://ec2-54-169-230-139.ap-southeast-1.compute.amazonaws.com:4200/petclinic/welcome");
     }
 
 
@@ -74,6 +78,6 @@ public abstract class TestBase {
 
     @AfterClass
     public void restartApp() {
-        driver.resetApp();
+        driver.quit();
     }
 }
